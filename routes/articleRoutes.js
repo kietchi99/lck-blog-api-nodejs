@@ -8,6 +8,9 @@ router
   .post(articleController.createArticle)
   .get(articleController.getAllArticles);
 
-router.route('/:id').get(articleController.getArticle);
+router
+  .route('/:id')
+  .get(articleController.getArticle)
+  .patch(articleController.updateArticle);
 
 module.exports = router;

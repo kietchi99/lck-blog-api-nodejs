@@ -13,4 +13,6 @@ router
   .patch(commentController.updateComment)
   .delete(commentController.deleteComment);
 
+router.route('/articles/:id').get(commentController.getCommentByArticleId);
+
 module.exports = router;

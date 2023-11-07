@@ -8,6 +8,11 @@ router
   .patch(userController.updateUser)
   .get(userController.getUser);
 
-router.route('/').get(userController.getAllUsers);
+router
+  .route('/')
+  .get(userController.getAllUsers)
+  .post(userController.createUser);
+
+router.route('/:id/articles').get(userController.getSavedArticles);
 
 module.exports = router;
