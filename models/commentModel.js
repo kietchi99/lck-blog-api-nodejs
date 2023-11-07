@@ -22,9 +22,10 @@ const commentSchema = new mongoose.Schema({
   replyTo: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
-    required: true,
   },
-  parent: this,
+  parent: {
+    type: mongoose.Schema.ObjectId,
+  },
 });
 
 const Comment = mongoose.model('Comment', commentSchema);

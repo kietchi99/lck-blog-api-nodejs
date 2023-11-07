@@ -6,14 +6,19 @@ const articleSchema = new mongoose.Schema({
     unique: true,
     required: [true, 'A article must have a title'],
   },
-  content: String,
+  slug: {
+    type: String,
+    trim: true,
+    lowercase: true,
+    unique: true,
+  },
+  content: {},
   isPublic: {
     type: Boolean,
     default: true,
   },
   imageCover: {
     type: String,
-    //required: [true, 'A article must have a cover image'],
   },
   createdAt: {
     type: Date,
@@ -42,8 +47,7 @@ const articleSchema = new mongoose.Schema({
   ],
   tags: [
     {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Tag',
+      type: String,
     },
   ],
   // images: [String]

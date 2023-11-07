@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
   role: {
@@ -12,10 +13,15 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: [true, 'A user must have a email !'],
     unique: true,
+    required: [true, 'A user must have a email !'],
     trim: true,
     lowercase: true,
+    validate: [validator.isEmail, 'Please provide valid email'],
+  },
+  name: {
+    type: String,
+    required: [true, 'A user must have a name !'],
   },
   savedArticles: [
     {
@@ -23,6 +29,9 @@ const userSchema = new mongoose.Schema({
       ref: 'Article',
     },
   ],
+  avatar: {
+    type: String,
+  },
 });
 
 const User = mongoose.model('User', userSchema);
